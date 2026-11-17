@@ -4,12 +4,29 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 
 public class SearchEngine {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        logAction("launch");
+        boolean running = true;
 
+        while (running) {
+            System.out.print("Enter a search term (X or x to exit): ");
+            String input = scanner.nextLine().trim();
+
+            if (input.equalsIgnoreCase("x")) {
+                running = false;
+            } else {
+                logAction("search : " + input);
+            }
+        }
+        logAction("exit");
+        scanner.close();
     }
+
 
     public static void logAction(String action) {
         LocalDateTime today = LocalDateTime.now();
